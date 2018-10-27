@@ -1,0 +1,7 @@
+{
+  "useSideMenu": true,
+  "lineBreaks": "gfm",
+  "additionalFooterText": "<p>We are all turing complete.</p>",
+  "anchorCharacter": "&#x2693;",
+  "title": "mhzed"
+}
