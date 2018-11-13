@@ -1,5 +1,5 @@
 [Home](index.md)
-[test](test.md)
+[Game](cat10/)
+[WordVec](wordvecplay/)
 
-[gimmick:theme](spacelab)
-[gimmick:ThemeChooser](Change theme)
+[gimmick:theme (inverse: false)](readable)

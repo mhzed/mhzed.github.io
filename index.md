@@ -1,16 +1,8 @@
-# We are are turing complete
+# MHZED
 
-## What is it
+My personal place for sharing random thoughts.
 
-Random work stuff.!!!!!!!!!!
+## Contact me
 
-## Example
+minhongz@gmail.com
 
-blah blah
-
-## test
-
-
-http://23.99.122.172/files/
-
-test
