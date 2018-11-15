@@ -41,8 +41,7 @@ Initial implementation will focus on the websites facing the supplier and buyer.
 
 ### After stage 1
 
-The goal of the components (China-Banking-Processor, US-Banking-Processor, Back-Office-Tools) is to help and assist human operators in monitoring/facilitating the transactiosn.  The eventual goal is to automate the process as much as possible, and just provide a
-dashboard for human operators to monitor and oversee the processes.  Acheiving this goal will be an iterative process that will evolve continually long after the system goes live.  
+The goal of the components (China-Banking-Processor, US-Banking-Processor, Back-Office-Tools) is to help and assist human operators in monitoring/facilitating the transactiosn.  The eventual goal is to automate the process as much as possible, and just provide a dashboard for human operators to monitor and oversee the processes.  Acheiving this goal will be an iterative process that will evolve continually long after the system goes live.  
 
 
 ## Technical design
