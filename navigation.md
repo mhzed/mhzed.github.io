@@ -1,5 +1,9 @@
 [Home](index.md)
-[Game](cat10/)
-[WordVec](wordvecplay/)
 
-[gimmick:theme (inverse: false)](readable)
+[1010](cat10.md)
+[WordVec](wordvecplay.md)
+[Wstunnel](wstunnel.md)
+[Solr](Solr.md)
+
+# [gimmick:ThemeChooser](Change theme)
+[gimmick:theme (inverse: false)](cerulean)

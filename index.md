@@ -1,12 +1,5 @@
 # MHZED
 
-My personal place for sharing random thoughts.
+Mhzed's collection of personal projects and random thoughts.
 
-## Contact me
-
-minhongz@gmail.com
-
-
-
-    [gimmick: iframe](http://cat10.mhzed.com)
 

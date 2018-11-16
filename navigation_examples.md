@@ -38,6 +38,8 @@
 <!-- counter pixel for counting visitors -->
 <!-- <img src="http://stats.markdown.io/mdwiki_info.gif" style="display:none;"/> -->
 
+[gimmick: iframe (width:800, height:1000)](http://cat10.mhzed.com)
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
