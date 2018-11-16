@@ -54,7 +54,8 @@ The technical design will involve considerabelly more compoenents such as databa
 We will deploy the websites in a cloud hosted in Hongkong (Azure), as Hongkong offers fast access to both China and USA.  The non customer facing components can be deployed elsewhere, most likely using digitalocean.com.  (I am a user and fan of digitalocean.com, which is a cloud provider with locations in Singapore and US, among other places.)
 
 
+## Powerpoint
 
-
+[Json's powerpoint](http://eye.eastasia.cloudapp.azure.com/files/SupplierPayHighLevelDesign.pptx)
 
 [gimmick:Disqus](supplierpay)

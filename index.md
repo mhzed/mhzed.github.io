@@ -6,3 +6,7 @@ My personal place for sharing random thoughts.
 
 minhongz@gmail.com
 
+
+
+    [gimmick: iframe](http://cat10.mhzed.com)
+
