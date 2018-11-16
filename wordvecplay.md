@@ -14,5 +14,5 @@ Try out these expressions:
     (chocolate+cream+cake)/3
 
 
-[gimmick: iframe (width:1000, height:1000)](/wordvecplay)
+[gimmick: iframe (width:1000, height:1000)](/wordvecplay/)
 
