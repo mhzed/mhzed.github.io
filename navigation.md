@@ -3,7 +3,9 @@
 [1010](cat10.md)
 [WordVec](wordvecplay.md)
 [Wstunnel](wstunnel.md)
-[Solr](Solr.md)
+[Solr ]()
+
+  * [Solr Cloud Join](solr-join.md)
 
 # [gimmick:ThemeChooser](Change theme)
 [gimmick:theme (inverse: false)](cerulean)
