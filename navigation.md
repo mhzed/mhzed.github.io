@@ -16,5 +16,5 @@
 
   * [Solr Cloud Join](solr-join.md)
 
-# [gimmick:ThemeChooser](Change theme)
-[gimmick:theme (inverse: false)](cerulean)
+[gimmick:ThemeChooser](Change theme)
+[gimmick:theme (inverse: false)](United)

@@ -8,25 +8,24 @@ In a CMS, there is usually a meta-data layer that describes all documents in the
 
 The full text search requirement usually includes some meta-data constraints along with the full text constraints on the document itself.  For example, find all files containing text "XYZ" under directory "/a/b/c", or find all objects containing text 'XYZ' of type derived from 'mammal', or find all documents containing text 'XYZ' and is searchable by user 'joe'.
 
-The straight-forward way to satisfy the search requirement is to embed all relevant information in the document during indexing.  For directories, it means simply indexing the entire directory path '/a/b/c' in the document itself.   This strategy however is not scalable for a dynamic directory structure in a cloud environment.  If a directory containing a lot of descendant files is moved, then every single file under it needs to be updated.  For Lucene index, an update is essentially delete/add the entire document, meaning it's very 
-__expensive!__
+The straight-forward way to satisfy the search requirement is to embed all relevant information in the document during indexing.  For directories, it means simply indexing the entire directory path '/a/b/c' in the document itself.   This strategy however is not scalable for a dynamic directory structure in a large scale system.  If a directory containing a lot of descendant files is moved, then every single file under it needs to be updated.  For Lucene index, an update is essentially delete+add the entire document, meaning it's going to be very __expensive!__
 
 
 ## Problem
 
-The problem can then be defined as such:  in a scalable Solr Cloud deployment, where all documents share some common dynamic meta-data that describes these documents, we want to support dynamic update of the meta-data without updating the documents, while still allowing fast searches that combine the meta-data constraints with the full text search constraints on the documents, .
+The problem can then be defined as such:  in a scalable Solr Cloud deployment, where all documents share some common dynamic meta-data that describes these documents, we want to support updating the meta-data without updating the documents, while still allowing fast searches that can combine the meta-data constraints with the full text search constraints on the documents, .
 
 ## Solution
 
-To segregate the update of meta-data and documents, the meta-data must then be stored separately from the documents.  At search time, Solr's join query](https://wiki.apache.org/solr/Join) is used to join the meta-data constraints with the document full-text constraints.  
+To segregate the update of meta-data and documents, the meta-data must then be stored separately from the documents at indexing time.  At search time, Solr's join query](https://wiki.apache.org/solr/Join) is used to join the meta-data constraints with the document full-text constraints.  
 
-We will talk about the steps in more details below.
+Let us talk about the solution in more details below.
 
 ### Meta-data collection
 
-The meta-data collection is always one shard with N replicas, where N is the number of Solr nodes that host the document collection.  The idea is to have a complete replica of meta-data index in each of the Solr node that hosts document collection.  Solr's "join" query also requires that the join-from-index exists locally in the Solr node.  This approach is also scalable: as a collection is scaled to more Solr nodes in the future, just add more meta-data replicas to the new nodes.  
+The meta-data collection is always one shard with N replicas, where N is the number of Solr nodes that host the document collection.  The idea is to have a complete replica of meta-data index in each of the Solr node that hosts the document collection.  Solr's "join" query also requires that the join-from-index exists locally in the same Solr node that hosts the join-to-index.  This approach is also scalable: as a collection is scaled to more Solr nodes in the future, just add more meta-data replicas to the new nodes.  
 
-Note this approach does impose a document size limit of 2 billion on the meta-data collection since there is one shard.  In most of cases this should not be a problem since meta-data is by definition shared by all documents, and thus limited in size.
+Note this approach does impose a document size limit of 2 billion on the meta-data collection since there is only one shard.  In most of cases this should not be a problem since meta-data is by definition shared by all documents, and thus limited in size.
 
 ### Solr join query
 
