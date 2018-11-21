@@ -1,7 +1,11 @@
 [Home](index.md)
 
 [1010](cat10.md)
-[WordVec](wordvecplay.md)
+[Deep learning]()
+
+  * [WordVec](wordvecplay.md)
+  * [MNIST](mnist.md)
+  
 [Wstunnel](wstunnel.md)
 [Solr ]()
 
