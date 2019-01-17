@@ -1,20 +1,19 @@
 [Home](index.md)
 
-[Games ]()
+[Resume](resume.md)
 
+[Projects]()
+
+  * [Wstunnel](wstunnel.md)
   * [1010](cat10.md)
   * [CritterTap](critter-tap.md)
-  
-[Deep learning ]()
-
   * [WordVec](wordvecplay.md)
   * [MNIST](mnist.md)
-  
-[Wstunnel](wstunnel.md)
 
 [Solr ]()
 
   * [Solr Cloud Join](solr-join.md)
+  * [Solr Disjunction Join](https://github.com/mhzed/solr-disjoin)
 
 [gimmick:ThemeChooser](Change theme)
 [gimmick:theme (inverse: false)](United)

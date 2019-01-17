@@ -29,7 +29,7 @@ Note this approach does impose a document size limit of 2 billion on the meta-da
 
 ### Solr join query
 
-Solr's[join query](https://wiki.apache.org/solr/Join) is equivalent to SQL's inner-join on a single field.  The [join query](https://wiki.apache.org/solr/Join) should always be supplied as a filter query along side the main search query on the documents.  This is because it's highly cachable by definition (meta-data is shared by documents), and multiple join queries can be combined together with ease via filter queries.
+Solr's [join query](https://wiki.apache.org/solr/Join) is equivalent to SQL's inner-join on a single field.  The [join query](https://wiki.apache.org/solr/Join) should always be supplied as a filter query along side the main search query on the documents.  This is because it's highly cachable by definition (meta-data is shared by documents), and multiple join queries can be combined together with ease via filter queries.
 
 It's worth noting the caching mechanism of the join+filter queries:  the cached results is the matching document id set in the document index, not the results returned by from-index (or meta-data index).  This cache is invalidated when either the document index changes or the from index (the metadata index) changes.  For system with multiple meta-data types, it may be desirable to store different types in different collections, so that change in one meta-data type will not invalidate the cache of other meta-data type. 
 
@@ -39,47 +39,50 @@ An [example](https://github.com/mhzed/join-filter-demo) is constructed to demons
 
 "DescendantJoinTest.java" contains an example for directory structure filtering.
 
-For creating the collection storing directory structure, the java code is:
+For creating the collection storing directory structure, for Solr >=7.5, the interface is [this](https://lucene.apache.org/solr/guide/7_6/colocating-collections.html).  Pre Solr 7.5, the equivalent java code is:
 
 ```java
-	public static CollectionAdminRequest.Create shadowCreate(
-					CloudSolrClient client, String originalCollection,
-					String shadowCollection, String config) throws IOException {
-		Collection<String> nodeset = client.getClusterStateProvider().getCollection(originalCollection).getSlices()
-						.stream().flatMap((slice)-> slice.getReplicas().stream()).map((replica)->
-						replica.getNodeName()).distinct().collect(Collectors.toList()); 						
-		CollectionAdminRequest.Create req = CollectionAdminRequest.createCollection(
-						shadowCollection, config, 1, nodeset.size());
-		req.setCreateNodeSet(nodeset.stream().collect(Collectors.joining(",")));
-		return req;
-	}	
-
+public static CollectionAdminRequest.Create shadowCreate(
+    CloudSolrClient client, String originalCollection,
+    String shadowCollection, String config) throws IOException {
+  Collection<String> nodeset = client.getClusterStateProvider()
+    .getCollection(originalCollection).getSlices()
+    .stream().flatMap((slice)-> slice.getReplicas().stream()).map((replica)->
+      replica.getNodeName()).distinct().collect(Collectors.toList()); 						
+  CollectionAdminRequest.Create req = CollectionAdminRequest.createCollection(
+          shadowCollection, config, 1, nodeset.size());
+  req.setCreateNodeSet(nodeset.stream().collect(Collectors.joining(",")));
+  return req;
+}	
 ```
 
-Above code first collection a set of Solr nodes that host 'originalCollection', then constructs a CollectionAdminRequest.Create request for the 'shadowCollection' on the same set of Solr nodes.
+Above code first collection a set of Solr nodes that host 'originalCollection', then constructs a CollectionAdminRequest.Create request for the 'shadowCollection' on the same set of Solr nodes.  The code however only deals with collection creation.  If the document collection scales to more nodes down the line, then remember to also do so for the "shadow" collection.
 
 For search, two approaches are shown.  The first example uses graph query:  if the folder objects are linked together as an acyclic graph via a 'parent' field, then a graph query can be used to collect all descendants of a folder.
 
 ```java
-	SolrQuery graphJoinQuery(String mainQuery, String folderId) {
-		return new SolrQuery(mainQuery).addFilterQuery(String.format(
-						"{!join fromIndex=%s from=%s to=%s}{!graph from=%s to=%s}%s:%s", 
-						FolderCollection, IdField, "folder_id_s",
-						ParentField, IdField, IdField, ClientUtils.escapeQueryChars(folderId))).setRows(1000000);
-	}
+SolrQuery graphJoinQuery(String mainQuery, String folderId) {
+  return new SolrQuery(mainQuery).addFilterQuery(String.format(
+    "{!join fromIndex=%s from=%s to=%s}{!graph from=%s to=%s}%s:%s", 
+    FolderCollection, IdField, "folder_id_s",
+    ParentField, IdField, IdField, 
+    ClientUtils.escapeQueryChars(folderId))).setRows(10000);
+}
 ```
 
 The second example uses the "PathHierarchyTokenizerFactory": the directory path is directly stored and analyzed via PathHierarchyTokenizerFactory.
 
 ```java
-	SolrQuery pathJoinQuery(String mainQuery, String path) {
-		return new SolrQuery(mainQuery).addFilterQuery(String.format(
-						"{!join fromIndex=%s from=%s to=%s}%s:%s", 
-						FolderCollection, IdField, "folder_id_s",
-						PathField, ClientUtils.escapeQueryChars(path))).setRows(1000000);
-	}
+SolrQuery pathJoinQuery(String mainQuery, String path) {
+  return new SolrQuery(mainQuery).addFilterQuery(String.format(
+    "{!join fromIndex=%s from=%s to=%s}%s:%s", 
+    FolderCollection, IdField, "folder_id_s",
+    PathField, ClientUtils.escapeQueryChars(path))).setRows(10000);
+}
 ```
 
 The benefit of using 'parent' field and graph query is that a directory move/rename is very cheap and easy to implement: simply update the 'parent' field of the moved directory object.  Whereas the "PathHierarchyTokenizerFactory" approach requires all descendant directory objects to be updated.  The drawback of graph query is that it's slower than a simple field match query, but filter-query-cache should minimize this slowness.  Either approach should work well in production environment.
 
+## Disjunction join
 
+Multiple join queries can be combined together with each as a filter query.  Result set is the conjunction of each member query due to the definition of filter query in Solr.  Though not as common, sometimes a disjunction of the result sets are required.  For this, please see my other project [solr-disjoin](https://github.com/mhzed/solr-disjoin).
