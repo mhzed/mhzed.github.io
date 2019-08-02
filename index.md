@@ -1,4 +1,11 @@
 # MHZED
 
-Welcome to my personal site, a collection of miscellaneous personal projects.  I am available for [hire](resume.md).
+This site contains a collection of personal projects and writings by [Minhong Zhou(周旻弘)](resume.md).
 
+* [Wstunnel](wstunnel.md)
+* [1010](cat10.md)
+* [CritterTap](critter-tap.md)
+* [WordVec](wordvecplay.md)
+* [MNIST](mnist.md)
+* [Solr Cloud Join](solr-join.md)
+* [Bayes](bayes.html)

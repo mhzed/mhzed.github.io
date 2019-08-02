@@ -9,11 +9,8 @@
   * [CritterTap](critter-tap.md)
   * [WordVec](wordvecplay.md)
   * [MNIST](mnist.md)
-
-[Solr ]()
-
   * [Solr Cloud Join](solr-join.md)
-  * [Solr Disjunction Join](https://github.com/mhzed/solr-disjoin)
+
 
 [gimmick:ThemeChooser](Change theme)
 [gimmick:theme (inverse: false)](United)
