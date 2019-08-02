@@ -85,4 +85,4 @@ The benefit of using 'parent' field and graph query is that a directory move/ren
 
 ## Disjunction join
 
-Multiple join queries can be combined together with each as a filter query.  Result set is the conjunction of each member query due to the definition of filter query in Solr.  Though not as common, sometimes a disjunction of the result sets are required.  For this, please see my other project [solr-disjoin](https://github.com/mhzed/solr-disjoin).
+Multiple join queries can be combined together with each as a filter query.  Result set is the conjunction of each member query due to the definition of filter query in Solr.  Sometimes a disjunction of the result sets are required.  For this, one can further combine Solr's boolean query with join.  For examples, please see the demo project [solr-disjoin](https://github.com/mhzed/solr-disjoin).
