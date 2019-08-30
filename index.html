@@ -9,7 +9,6 @@
       rel="stylesheet"
       href="https://unpkg.com/docsify-themeable/dist/css/theme-simple.css"
     />
-    <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css" />
     <!--
     <link rel="stylesheet" href="//unpkg.com/docsify/themes/dark.css"> 
     dark/buble/vue/pure-->
@@ -23,29 +22,16 @@
         loadNavbar: false,
         loadSidebar: "sidebar.md",
         coverpage: "coverpage.md",
-        ga: "UA-146782483-1"
+        ga: "UA-146782483-1",
+        disqus: "mhzed-com"
       };
     </script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
     <script src="//unpkg.com/docsify-themeable"></script>
     <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+    <!--<script src="//unpkg.com/docsify/lib/plugins/disqus.min.js"></script>-->
     <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
     <script src="//unpkg.com/prismjs/components/prism-javascript.min.js"></script>
     <script src="//unpkg.com/prismjs/components/prism-typescript.min.js"></script>
-
-    <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
-    <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-      const gitalk = new Gitalk({
-        clientID: "41454a840b7564eebbbd",
-        clientSecret: "4d3d16c6a7e6b076ad3b7550ac57010ab08ebc10",
-        repo: "sitegittalk",
-        owner: "mhzed",
-        admin: [],
-        id: "Discuss",
-        // facebook-like distraction free mode
-        distractionFreeMode: false
-      });
-    </script>
   </body>
 </html>
