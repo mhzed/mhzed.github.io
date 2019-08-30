@@ -1,8 +1,8 @@
-[Home](index.md)
+* [Home](readme.md)
 
-[Resume](resume.md)
+* [Resume](resume.md)
 
-[Projects]()
+* [Projects]()
 
   * [Wstunnel](wstunnel.md)
   * [1010](cat10.md)
@@ -11,6 +11,7 @@
   * [MNIST](mnist.md)
   * [Solr Cloud Join](solr-join.md)
 
+* [Misc]()
 
-[gimmick:ThemeChooser](Change theme)
-[gimmick:theme (inverse: false)](United)
+  * [DRAM](d.md)
+  * [SSD](ssd.md)

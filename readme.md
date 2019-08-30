@@ -1,6 +1,6 @@
 # MHZED
 
-This site contains a collection of personal projects and writings by [Minhong Zhou(周旻弘)](resume.md).
+This site contains a collection of personal projects by [Minhong Zhou(周旻弘)](resume.md).
 
 * [Wstunnel](wstunnel.md)
 * [1010](cat10.md)
@@ -8,4 +8,4 @@ This site contains a collection of personal projects and writings by [Minhong Zh
 * [WordVec](wordvecplay.md)
 * [MNIST](mnist.md)
 * [Solr Cloud Join](solr-join.md)
-* [Bayes](bayes.html)
+* [Bayes](bayes.md)

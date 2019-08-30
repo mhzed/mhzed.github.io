@@ -14,7 +14,7 @@ I am a software industry veteran with 20+ years of experience.  I've worked in e
 
 ### EMC/DELL/OpenText (2012-now)
 
-Senior Consultant Engineer in EMC's ECD division in Shanghai China, later acquired by DELL and then OpenText.  Software architect for full text search product development in Documentum xPlore, cloud integration with Solr and ElasticSearch.  Experienced in Apache Lucene and its ecosystem of products.  Familiar with Natural Language Processing technologies.  Lead the team to successfully deliver both on-premise software solutions and cloud search service solutions.  Chair of China COE (Center of Excellence) patent committee while at EMC.  Participated in the XQuery/XPath standard committees.
+Senior Consultant Engineer in EMC's ECD division in Shanghai China, later acquired by DELL and then OpenText.  Software architect for full text search product development in Documentum xPlore, cloud integration with Solr and ElasticSearch.  Experienced in Apache Lucene and its ecosystem of products.  Familiar with Natural Language Processing technologies.  Lead the team to successfully deliver both on-premise software solutions and cloud search service solutions.  Chair of China COE (Center of Excellence) patent committee while at EMC.  Participated in the W3C XQuery/XPath standard committees.
 
 ### Ubisoft (2010-2012)
 
