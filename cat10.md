@@ -4,7 +4,7 @@ A clone of game [1010](http://1010ga.me) with tweaks: you can rotate the pieces.
 
 I made this game as a learning project to work with the touch controls on mobile phone.  It also works pretty well on desktop with mouse though.
 
-Launch the game [here](http://mhzed.github.io/cat10/).
+Launch the game [here](//mhzed.github.io/cat10/).
 
 Here is a screen shot.
 
