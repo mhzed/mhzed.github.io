@@ -1,6 +1,6 @@
 # CritterTap
 
-An android game made in [Unity](https://unit.com).
+An android game made in [Unity](https://unity.com).
 
-[APK direct download](http://eye.eastasia.cloudapp.azure.com/files/CritterTap.apk).
+[APK direct download](http://128.199.147.196/data/CritterTap.apk).
 
