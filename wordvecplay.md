@@ -15,4 +15,4 @@ Try out these expressions:
 
     tokyo-japan+france
 
-[](//mhzed.com/wordvecplay/ ':include :type=iframe width=700px height=800px')
+[](//mhzed.github.io/wordvecplay/ ':include :type=iframe width=700px height=800px')
